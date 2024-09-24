@@ -43,39 +43,51 @@ public class HomeworkController {
     }
 
     // 세부 조회
-// 세부 조회
     @GetMapping("/homework/{id}")
     public String homework_detail(@PathVariable("id") Long id, Model model, HttpSession session) {
         Boolean isAdmin = (Boolean) session.getAttribute("is_admin");
         Homework homework = homeworkService.getHomeworkById(id);
-        if () {
-
+        if (isAdmin != null && isAdmin) {
+            Map<User, List<UserHomework>> submittedFileGroupedByUser = homeworkService.getSubmittedFilesGroupedByUser(id);
+            model.addAttribute("homework",homework);
+            model.addAttribute("submittedFileGroupedByUser", submittedFileGroupedByUser);
 
             return "homework/homework_admin";
         } else {
-
+            Long userId = (Long) session.getAttribute("user_id");
+            List<UserHomework> userSubmittedFiles = homeworkService.getSubmittedFilesByHomeworkIdAndUserId(id, userId);
+            System.out.println(userSubmittedFiles);
+            model.addAttribute("homework", homework);
+            model.addAttribute("submittedFiles", userSubmittedFiles);
             return "homework/homework";
         }
     }
 
     // 새글 쓰기
-    @GetMapping
-
+    @GetMapping("/homework/new")
+    public String homework_new() { return "homework/write"; }
     // 업로드
-    @PostMapping
-
+    @PostMapping("/homework/post")
+    public ResponseEntity<Homework> createHomework(@RequestBody Homework homework) {
+        homework.setCreatedDate(LocalDateTime.now());
+        Homework createdHomework = homeworkService.saveHomework(homework);
+        return ResponseEntity.ok(createdHomework);
+    }
     // 수정하기
     @GetMapping("/homework/edit/{id}")
     public String homework_edit(@PathVariable Long id, Model model) {
         Homework homework = homeworkService.getHomeworkById(id);
         if (homework == null) {
-
+            throw new IllegalStateException("해당 ID의 과제가 존재하지 않습니다." + id);
         }
         model.addAttribute("homework", homework);
-
+        return "homework/write";
     }
     // 수정 저장
-    @PutMapping
+    @PutMapping("/homework/post/{id}")
+    public ResponseEntity<Homework> updateHOmework(@PathVariable Long id, @RequestBody Homework homework){
+        Homework updateHomework = homeworkService.updateHomework(id, homework);
+        return ResponseEntity.ok(updateHomework);
 
     }
 }
