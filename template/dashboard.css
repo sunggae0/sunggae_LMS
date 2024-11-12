@@ -1,19 +1,242 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
 @font-face {
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-Regular';
     src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
     font-style: normal;
 }
 
 
-:root{
-    --color-main-orange: #f6bc72;
-    --color-main-brown: #543333;
-    --color-main-gray: #cdcdcd;
-    --corlor-main-black: #000000;
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-:nav{
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+}
 
+/* 네비게이션 스타일 */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+.nav .nav1 {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: block;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.logo1 {
+    color: orange;
+    font-size: 1.2em;
+    font-family: Pretendard-Regular;
+    font-weight: bolder;
+}
+
+.logo2 {
+    font-size: 1.2em;
+    font-family: Pretendard-Regular;
+    font-weight: bolder;
+}
+
+.home_btn, .LLU_btn {
+    margin: 0 50px;
+    cursor: pointer;
+    font-family: Pretendard-Regular;
+    font-weight: bolder;
+}
+
+.nav2 {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard_btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.profile {
+    background-color: #ddd;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+/* 메인 콘텐츠 스타일 */
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.main_main{
+    margin: 20px;
+    width: 1271px;
+}
+
+/* 미제출 과제 알림 */
+.warning {
+    background-color: #f99;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 10px red;
+    border: solid red 1px;
+}
+
+.warning1 {
+    display: block;
+    margin-left: 36px;
+    margin-bottom: 26px;
+    margin-top: 26px;
+}
+.warning1_ass{
+    display: flex;
+}
+
+
+.warning_title {
+    font-size: 36px;
+    font-family: Pretendard-Regular;
+    font-weight: bold;
+
+}
+
+.warning_icon {
+    font-size: 0.8em;
+    color: #fdd;
+    font-size: 24px;
+}
+.warning_people, .warning_close{
+    margin-left: 10px;
+    color: white;
+    font-size: 36px;
+}
+.warning_subject{
+    margin-left: 10px;
+    color: white;
+    font-size: 26px;
+}
+
+/* 환영 메시지와 개요 */
+.a {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin: 50px auto;
+}
+
+.a_a_1 {
+    font-size: 40px;
+    font-family: Pretendard-Black;
+    font-weight:750;
+
+}
+
+.a_a_2 {
+    font-size: 40px;
+    font-family: Pretendard-Black;
+    font-weight: 750;
+}
+
+.a_a_3 {
+    font-family: Pretendard-Black;
+    font-weight: 300;
+    font-size: 24px;
+    color: #777;
+}
+
+.a_b {
+    display: block;
+    margin-right: 300px;
+}
+
+.a_b_title {
+    font-family: Pretendard-Black;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 40px;
+}
+
+.a_b_btns {
+    display: flex;
+    flex-direction: row;
+}
+
+.a_b_btns_info, .a_b_btns_QnA {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.a_b_btns_info_img, .a_b_btns_QnA_img {
+    width: 60px;
+    height: 60px;
+    background-color: orange;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+}
+
+.a_b_btns_info_txt, .a_b_btns_QnA_txt {
+    margin-top: 15px;
+    color = black;
+    font-size: 20px;
+}
+
+/* 세션 정보 */
+.b{
+    background-color: white;
+    padding: 30px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    border: solid black 1px;
+}
+
+.b_title, .c_title {
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.b_detail {
+    color: #555;
+}
+
+.c{
+    background-color: white;
+    margin-bottom: 20px;
 }
